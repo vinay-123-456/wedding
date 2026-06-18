@@ -238,9 +238,16 @@
             color: var(--gold);
         }
 
+        .card-btn.btn-move-up:hover,
+        .card-btn.btn-move-down:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
         .card-btn.btn-delete:hover {
             border-color: #ef4444;
             color: #ef4444;
+            background: rgba(239, 68, 68, 0.05);
         }
 
         /* Action Buttons Row */
@@ -780,8 +787,10 @@
                                 <p>${item.details}</p>
                             </div>
                             <div class="card-actions">
-                                <div class="card-btn btn-edit" data-id="${item.id}"><i class="fa-solid fa-pen-to-square"></i> Edit</div>
-                                <div class="card-btn btn-delete" data-id="${item.id}"><i class="fa-solid fa-trash"></i> Delete</div>
+                                <div class="card-btn btn-edit" data-id="${item.id}" title="Edit" style="flex: 2;"><i class="fa-solid fa-pen-to-square"></i> Edit</div>
+                                <div class="card-btn btn-move-up" data-id="${item.id}" title="Move Left (Earlier)"><i class="fa-solid fa-chevron-left"></i></div>
+                                <div class="card-btn btn-move-down" data-id="${item.id}" title="Move Right (Later)"><i class="fa-solid fa-chevron-right"></i></div>
+                                <div class="card-btn btn-delete" data-id="${item.id}" title="Delete" style="flex: 2;"><i class="fa-solid fa-trash"></i> Delete</div>
                             </div>
                         </div>
                     `;
@@ -797,12 +806,55 @@
                     });
                 });
 
+                document.querySelectorAll('.btn-move-up').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const id = btn.getAttribute('data-id');
+                        moveItem(id, -1);
+                    });
+                });
+
+                document.querySelectorAll('.btn-move-down').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const id = btn.getAttribute('data-id');
+                        moveItem(id, 1);
+                    });
+                });
+
                 document.querySelectorAll('.btn-delete').forEach(btn => {
                     btn.addEventListener('click', (e) => {
                         const id = btn.getAttribute('data-id');
                         deleteItem(id);
                     });
                 });
+            }
+
+            // Move Item in list (Reorder)
+            async function moveItem(id, direction) {
+                const index = portfolioData.findIndex(i => i.id == id);
+                if (index === -1) return;
+
+                const targetIndex = index + direction;
+                // Boundary check
+                if (targetIndex < 0 || targetIndex >= portfolioData.length) return;
+
+                showLoader('Reordering Portfolio...', 'Updating display sequence...');
+
+                try {
+                    // Swap items in the local array
+                    const temp = portfolioData[index];
+                    portfolioData[index] = portfolioData[targetIndex];
+                    portfolioData[targetIndex] = temp;
+
+                    // Commit changes to portfolio.json on GitHub
+                    await commitPortfolioJson();
+
+                    hideLoader();
+                    showSuccessOverlay();
+                    loadDashboard();
+                } catch (err) {
+                    hideLoader();
+                    alert(`Error reordering: ${err.message}`);
+                }
             }
 
             // Open modal to Edit
