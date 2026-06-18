@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Devesh Events</title>
+    <!-- Font Awesome for premium icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Local CSS link -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding-top: 40px;
+        }
+
+        .admin-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .header-row h1 {
+            font-size: 2.2rem;
+            margin: 0;
+        }
+
+        .back-btn {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition-fast);
+        }
+
+        .back-btn:hover {
+            color: var(--gold);
+        }
+
+        /* Login Layout */
+        .login-card {
+            max-width: 500px;
+            margin: 5rem auto;
+            padding: 3rem;
+            border-radius: 0;
+            position: relative;
+        }
+
+        .login-card::before {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: var(--gold-glow);
+            filter: blur(40px);
+            top: -20px;
+            right: -20px;
+            z-index: -1;
+        }
+
+        .login-card h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .login-description {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold);
+            font-weight: 500;
+        }
+
+        .form-control {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            padding: 0.9rem 1.2rem;
+            color: var(--white);
+            font-size: 0.9rem;
+            transition: var(--transition-smooth);
+            width: 100%;
+        }
+
+        .form-control:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.15);
+        }
+
+        .help-box {
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            padding: 1.2rem;
+            font-size: 0.8rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .help-box ol {
+            padding-left: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .help-box li {
+            margin-bottom: 0.3rem;
+        }
+
+        .help-box a {
+            color: var(--gold);
+            text-decoration: underline;
+        }
+
+        /* Dashboard Items */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .item-card {
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            position: relative;
+            height: 380px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .item-card:hover {
+            border-color: var(--gold);
+            box-shadow: var(--shadow-gold);
+            transform: translateY(-3px);
+        }
+
+        .card-img-wrapper {
+            height: 180px;
+            overflow: hidden;
+            position: relative;
+            background: #18181b;
+        }
+
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-category-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--bg-primary);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 0.3rem 0.6rem;
+            font-weight: 600;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-body h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+            line-height: 1.2;
+        }
+
+        .card-body p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 1rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+            margin-top: auto;
+        }
+
+        .card-btn {
+            flex: 1;
+            padding: 0.5rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .card-btn.btn-edit:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .card-btn.btn-delete:hover {
+            border-color: #ef4444;
+            color: #ef4444;
+        }
+
+        /* Action Buttons Row */
+        .actions-row {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(9, 9, 11, 0.95);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            width: 100%;
+            max-width: 550px;
+            padding: 3rem;
+            border-radius: 0;
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .modal-header h2 {
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        .close-modal-btn {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .close-modal-btn:hover {
+            color: var(--gold);
+        }
+
+        /* Loader Overlay */
+        .loader-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(9, 9, 11, 0.98);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .loader-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 2px solid var(--border-color);
+            border-top: 2px solid var(--gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 2rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loader-text {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .loader-sub {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Success Dialog */
+        .success-dialog {
+            text-align: center;
+            max-width: 450px;
+            padding: 3rem;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .success-dialog h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .success-dialog p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="admin-container" id="login-view">
+        <div class="login-card glass-panel">
+            <h2>Access Panel</h2>
+            <p class="login-description">Enter your GitHub credentials to manage the portfolio on the live site.</p>
+            
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="github-username">GitHub Username</label>
+                    <input type="text" id="github-username" class="form-control" placeholder="E.g., vinay-123-456" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="github-repo">Repository Name</label>
+                    <input type="text" id="github-repo" class="form-control" placeholder="E.g., wedding" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="github-token">Personal Access Token (PAT)</label>
+                    <input type="password" id="github-token" class="form-control" placeholder="ghp_xxxxxxxxxxxxxxxxxxxxxx" required>
+                </div>
+
+                <div class="help-box">
+                    <strong>🔑 How to create a Token:</strong>
+                    <ol>
+                        <li>Go to your GitHub <a href="https://github.com/settings/tokens" target="_blank">Tokens Settings</a>.</li>
+                        <li>Click <strong>Generate new token</strong> &rarr; <strong>Generate new token (classic)</strong>.</li>
+                        <li>Give it a name (e.g. "wedding-admin") and select the <strong>repo</strong> checkbox scope.</li>
+                        <li>Generate token, copy it, and paste it above!</li>
+                    </ol>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Connect Dashboard</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="admin-container" id="dashboard-view" style="display: none;">
+        <div class="header-row">
+            <div>
+                <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Website</a>
+                <h1 class="gold-text" style="margin-top: 0.5rem;">Devesh Events Admin</h1>
+            </div>
+            <button class="btn btn-secondary" id="logout-btn" style="padding: 0.6rem 1.5rem; font-size: 0.75rem;">Log Out</button>
+        </div>
+
+        <div class="actions-row">
+            <button class="btn btn-primary" id="add-item-btn"><i class="fa-solid fa-plus" style="margin-right: 8px;"></i> Add Portfolio Item</button>
+        </div>
+
+        <div class="dashboard-grid" id="portfolio-items-list">
+            <!-- Dynamic items list -->
+        </div>
+    </div>
+
+    <!-- Add/Edit Modal -->
+    <div class="modal-overlay" id="edit-modal">
+        <div class="modal-card glass-panel">
+            <div class="modal-header">
+                <h2 id="modal-title">Edit Item</h2>
+                <i class="fa-solid fa-xmark close-modal-btn" id="close-modal-x"></i>
+            </div>
+            
+            <form id="item-form">
+                <input type="hidden" id="item-id">
+                
+                <div class="form-group">
+                    <label for="item-name">Project / Client Title</label>
+                    <input type="text" id="item-name" class="form-control" placeholder="E.g., A Royal Affair" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="item-details">Details / Location</label>
+                    <input type="text" id="item-details" class="form-control" placeholder="E.g., Beach Wedding | Amalfi Coast, Italy" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="item-category">Category</label>
+                    <select id="item-category" class="form-control" required style="background-color: var(--bg-primary);">
+                        <option value="weddings">Weddings</option>
+                        <option value="corporate">Corporate</option>
+                        <option value="live">Live Events</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="item-image-file" id="image-label">Image File (PNG/JPG)</label>
+                    <input type="file" id="item-image-file" class="form-control" accept="image/*">
+                    <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;" id="image-hint">Leave blank to keep current image.</p>
+                </div>
+
+                <div class="actions-row" style="margin-top: 2rem; margin-bottom: 0;">
+                    <button type="submit" class="btn btn-primary" style="flex: 1;" id="modal-submit-btn">Publish Item</button>
+                    <button type="button" class="btn btn-secondary" style="flex: 1;" id="cancel-modal-btn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Loader & Progress Overlay -->
+    <div class="loader-overlay" id="loader-overlay">
+        <div class="spinner"></div>
+        <div class="loader-text" id="loader-title">Saving changes...</div>
+        <div class="loader-sub" id="loader-description">Uploading data to GitHub...</div>
+    </div>
+
+    <!-- Success Feedback Overlay -->
+    <div class="modal-overlay" id="success-overlay">
+        <div class="success-dialog glass-panel">
+            <i class="fa-solid fa-circle-check success-icon"></i>
+            <h3>Changes Published!</h3>
+            <p>Your edits have been successfully committed to GitHub. GitHub Pages is rebuilding your site, and the live updates will be visible to your client in 1-2 minutes.</p>
+            <button class="btn btn-primary" id="close-success-btn">Close Dashboard</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Local state
+            let portfolioData = [];
+            let githubCredentials = null;
+            let currentUploadedImageBase64 = null;
+            let currentUploadedImageName = null;
+
+            // DOM elements
+            const loginView = document.getElementById('login-view');
+            const dashboardView = document.getElementById('dashboard-view');
+            const loginForm = document.getElementById('login-form');
+            const githubUsernameInput = document.getElementById('github-username');
+            const githubRepoInput = document.getElementById('github-repo');
+            const githubTokenInput = document.getElementById('github-token');
+
+            const portfolioList = document.getElementById('portfolio-items-list');
+            const addItemBtn = document.getElementById('add-item-btn');
+            const logoutBtn = document.getElementById('logout-btn');
+
+            const editModal = document.getElementById('edit-modal');
+            const itemForm = document.getElementById('item-form');
+            const itemIdInput = document.getElementById('item-id');
+            const itemNameInput = document.getElementById('item-name');
+            const itemDetailsInput = document.getElementById('item-details');
+            const itemCategorySelect = document.getElementById('item-category');
+            const itemImageFileInput = document.getElementById('item-image-file');
+            const imageLabel = document.getElementById('image-label');
+            const imageHint = document.getElementById('image-hint');
+            const modalTitle = document.getElementById('modal-title');
+            const modalSubmitBtn = document.getElementById('modal-submit-btn');
+            
+            const closeModalX = document.getElementById('close-modal-x');
+            const cancelModalBtn = document.getElementById('cancel-modal-btn');
+
+            const loaderOverlay = document.getElementById('loader-overlay');
+            const loaderTitle = document.getElementById('loader-title');
+            const loaderDescription = document.getElementById('loader-description');
+
+            const successOverlay = document.getElementById('success-overlay');
+            const closeSuccessBtn = document.getElementById('close-success-btn');
+
+            // Pre-fill fields if cached or matching default
+            githubUsernameInput.value = 'vinay-123-456';
+            githubRepoInput.value = 'wedding';
+
+            // Auto-login from local storage if existing
+            const cachedCreds = localStorage.getItem('devesh_events_github_creds');
+            if (cachedCreds) {
+                try {
+                    githubCredentials = JSON.parse(cachedCreds);
+                    githubUsernameInput.value = githubCredentials.username;
+                    githubRepoInput.value = githubCredentials.repo;
+                    githubTokenInput.value = githubCredentials.token;
+                    loadDashboard();
+                } catch (e) {
+                    localStorage.removeItem('devesh_events_github_creds');
+                }
+            }
+
+            // Login submission
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                showLoader('Connecting to GitHub...', 'Validating credentials and repository...');
+
+                const creds = {
+                    username: githubUsernameInput.value.trim(),
+                    repo: githubRepoInput.value.trim(),
+                    token: githubTokenInput.value.trim()
+                };
+
+                try {
+                    // Validate credentials by fetching portfolio.json
+                    const url = `https://api.github.com/repos/${creds.username}/${creds.repo}/contents/portfolio.json`;
+                    const res = await fetch(url, {
+                        headers: { 'Authorization': `token ${creds.token}` }
+                    });
+
+                    if (!res.ok) {
+                        if (res.status === 404) {
+                            throw new Error('Repository or portfolio.json not found on GitHub. Verify the credentials.');
+                        } else {
+                            throw new Error('Authentication failed. Check your token.');
+                        }
+                    }
+
+                    // Credentials are valid, cache them
+                    localStorage.setItem('devesh_events_github_creds', JSON.stringify(creds));
+                    githubCredentials = creds;
+                    
+                    const fileData = await res.json();
+                    const content = decodeBase64(fileData.content);
+                    portfolioData = JSON.parse(content);
+
+                    hideLoader();
+                    showDashboardView();
+                } catch (err) {
+                    hideLoader();
+                    alert(`Error: ${err.message}`);
+                }
+            });
+
+            // Logout
+            logoutBtn.addEventListener('click', () => {
+                localStorage.removeItem('devesh_events_github_creds');
+                githubCredentials = null;
+                portfolioData = [];
+                showLoginView();
+            });
+
+            // Handle file input changes (convert to base64)
+            itemImageFileInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (!file) {
+                    currentUploadedImageBase64 = null;
+                    currentUploadedImageName = null;
+                    return;
+                }
+
+                currentUploadedImageName = file.name;
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                    currentUploadedImageBase64 = reader.result.split(',')[1];
+                };
+                reader.readAsDataURL(file);
+            });
+
+            // Open Modal for Create
+            addItemBtn.addEventListener('click', () => {
+                modalTitle.textContent = 'Add Portfolio Item';
+                modalSubmitBtn.textContent = 'Publish Item';
+                itemForm.reset();
+                itemIdInput.value = '';
+                imageLabel.textContent = 'Upload Image (Required)';
+                itemImageFileInput.required = true;
+                imageHint.style.display = 'none';
+                currentUploadedImageBase64 = null;
+                currentUploadedImageName = null;
+                editModal.classList.add('active');
+            });
+
+            // Close Modals
+            const closeModal = () => {
+                editModal.classList.remove('active');
+            };
+            closeModalX.addEventListener('click', closeModal);
+            cancelModalBtn.addEventListener('click', closeModal);
+
+            // Close success modal
+            closeSuccessBtn.addEventListener('click', () => {
+                successOverlay.classList.remove('active');
+            });
+
+            // Handle Save Item Form Submission
+            itemForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                closeModal();
+
+                const id = itemIdInput.value;
+                const title = itemNameInput.value.trim();
+                const details = itemDetailsInput.value.trim();
+                const category = itemCategorySelect.value;
+
+                showLoader('Publishing Changes...', 'Uploading data to GitHub repository...');
+
+                try {
+                    let imagePath = '';
+
+                    // If editing, find current image
+                    if (id) {
+                        const existingItem = portfolioData.find(item => item.id == id);
+                        if (existingItem) {
+                            imagePath = existingItem.image;
+                        }
+                    }
+
+                    // If a new image was selected, upload it
+                    if (currentUploadedImageBase64) {
+                        showLoader('Uploading Image...', `Saving ${currentUploadedImageName} to assets...`);
+                        const cleanFilename = currentUploadedImageName.replace(/[^a-zA-Z0-9.]/g, '_');
+                        const pathInRepo = `assets/portfolio/${Date.now()}_${cleanFilename}`;
+                        
+                        await uploadFileToGitHub(pathInRepo, currentUploadedImageBase64, `Upload portfolio image: ${cleanFilename}`);
+                        imagePath = pathInRepo;
+                    }
+
+                    // Create or update item in local array
+                    if (id) {
+                        // Edit mode
+                        const index = portfolioData.findIndex(item => item.id == id);
+                        if (index !== -1) {
+                            portfolioData[index] = {
+                                id: parseInt(id, 10),
+                                category,
+                                title,
+                                details,
+                                image: imagePath,
+                                alt: title
+                            };
+                        }
+                    } else {
+                        // Create mode
+                        const nextId = portfolioData.length > 0 ? Math.max(...portfolioData.map(i => i.id)) + 1 : 1;
+                        portfolioData.push({
+                            id: nextId,
+                            category,
+                            title,
+                            details,
+                            image: imagePath,
+                            alt: title
+                        });
+                    }
+
+                    // Commit updated portfolio.json
+                    showLoader('Updating Config...', 'Saving portfolio data list changes...');
+                    await commitPortfolioJson();
+
+                    hideLoader();
+                    showSuccessOverlay();
+                    loadDashboard();
+                } catch (err) {
+                    hideLoader();
+                    alert(`Error publishing: ${err.message}`);
+                }
+            });
+
+            // Load full Dashboard Data
+            async function loadDashboard() {
+                showLoader('Fetching Portfolio...', 'Reading current gallery list...');
+                try {
+                    const url = `https://api.github.com/repos/${githubCredentials.username}/${githubCredentials.repo}/contents/portfolio.json`;
+                    const res = await fetch(url, {
+                        headers: { 'Authorization': `token ${githubCredentials.token}` }
+                    });
+
+                    if (!res.ok) {
+                        throw new Error('Failed to load portfolio database file.');
+                    }
+
+                    const fileData = await res.json();
+                    const content = decodeBase64(fileData.content);
+                    portfolioData = JSON.parse(content);
+                    
+                    renderDashboardItems();
+                    hideLoader();
+                    showDashboardView();
+                } catch (err) {
+                    hideLoader();
+                    alert(`Error loading data: ${err.message}`);
+                    showLoginView();
+                }
+            }
+
+            // Render Dashboard Cards
+            function renderDashboardItems() {
+                portfolioList.innerHTML = '';
+                if (portfolioData.length === 0) {
+                    portfolioList.innerHTML = '<div style="grid-column: span 3; text-align: center; color: var(--text-secondary); margin-top: 3rem;">No items found. Click "Add Portfolio Item" to create one.</div>';
+                    return;
+                }
+
+                portfolioData.forEach(item => {
+                    // Check if image path is remote github content path or local cached path
+                    // If it is in the repository (e.g. assets/portfolio/...), link it dynamically to the raw github user content so it loads instantly even locally!
+                    let displayImageUrl = item.image;
+                    if (!item.image.startsWith('http')) {
+                        // Construct Raw GitHub Usercontent URL so that they see images uploaded via API immediately, without relative path failures
+                        displayImageUrl = `https://raw.githubusercontent.com/${githubCredentials.username}/${githubCredentials.repo}/main/${item.image}`;
+                    }
+
+                    const card = document.createElement('div');
+                    card.className = 'item-card';
+                    card.innerHTML = `
+                        <div class="card-img-wrapper">
+                            <img src="${displayImageUrl}" alt="${item.title}" onerror="this.src='assets/hero_event.jpg'">
+                            <div class="card-category-tag">${item.category}</div>
+                        </div>
+                        <div class="card-body">
+                            <div>
+                                <h3>${item.title}</h3>
+                                <p>${item.details}</p>
+                            </div>
+                            <div class="card-actions">
+                                <div class="card-btn btn-edit" data-id="${item.id}"><i class="fa-solid fa-pen-to-square"></i> Edit</div>
+                                <div class="card-btn btn-delete" data-id="${item.id}"><i class="fa-solid fa-trash"></i> Delete</div>
+                            </div>
+                        </div>
+                    `;
+
+                    portfolioList.appendChild(card);
+                });
+
+                // Wire up card edit/delete button events
+                document.querySelectorAll('.btn-edit').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const id = btn.getAttribute('data-id');
+                        openEditModal(id);
+                    });
+                });
+
+                document.querySelectorAll('.btn-delete').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const id = btn.getAttribute('data-id');
+                        deleteItem(id);
+                    });
+                });
+            }
+
+            // Open modal to Edit
+            function openEditModal(id) {
+                const item = portfolioData.find(i => i.id == id);
+                if (!item) return;
+
+                modalTitle.textContent = 'Edit Portfolio Item';
+                modalSubmitBtn.textContent = 'Save Changes';
+                
+                itemIdInput.value = item.id;
+                itemNameInput.value = item.title;
+                itemDetailsInput.value = item.details;
+                itemCategorySelect.value = item.category;
+                
+                imageLabel.textContent = 'Update Image File (Optional)';
+                itemImageFileInput.required = false;
+                imageHint.style.display = 'block';
+                itemImageFileInput.value = '';
+                currentUploadedImageBase64 = null;
+                currentUploadedImageName = null;
+
+                editModal.classList.add('active');
+            }
+
+            // Delete Item Flow
+            async function deleteItem(id) {
+                const item = portfolioData.find(i => i.id == id);
+                if (!item) return;
+
+                if (!confirm(`Are you sure you want to delete "${item.title}"?`)) {
+                    return;
+                }
+
+                showLoader('Deleting Item...', `Removing "${item.title}" from catalog...`);
+
+                try {
+                    // Update array by removing item
+                    portfolioData = portfolioData.filter(i => i.id != id);
+
+                    // Commit changes to portfolio.json
+                    await commitPortfolioJson();
+
+                    hideLoader();
+                    showSuccessOverlay();
+                    loadDashboard();
+                } catch (err) {
+                    hideLoader();
+                    alert(`Error deleting: ${err.message}`);
+                }
+            }
+
+            // Helper to upload a binary file to GitHub
+            async function uploadFileToGitHub(path, base64Content, commitMessage) {
+                const url = `https://api.github.com/repos/${githubCredentials.username}/${githubCredentials.repo}/contents/${path}`;
+                const body = {
+                    message: commitMessage,
+                    content: base64Content
+                };
+
+                const res = await fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `token ${githubCredentials.token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(body)
+                });
+
+                if (!res.ok) {
+                    const errorDetails = await res.json();
+                    throw new Error(`Upload failed: ${errorDetails.message || res.statusText}`);
+                }
+            }
+
+            // Helper to commit portfolio.json to GitHub
+            async function commitPortfolioJson() {
+                const url = `https://api.github.com/repos/${githubCredentials.username}/${githubCredentials.repo}/contents/portfolio.json`;
+                
+                // Fetch the current SHA
+                const getRes = await fetch(url, {
+                    headers: { 'Authorization': `token ${githubCredentials.token}` }
+                });
+
+                let sha = '';
+                if (getRes.ok) {
+                    const currentFile = await getRes.json();
+                    sha = currentFile.sha;
+                }
+
+                const jsonString = JSON.stringify(portfolioData, null, 2);
+                // Correct encoding to base64 supporting UTF-8 characters
+                const base64Content = btoa(unescape(encodeURIComponent(jsonString)));
+
+                const body = {
+                    message: 'Update portfolio items via Admin Panel',
+                    content: base64Content,
+                    sha: sha
+                };
+
+                const putRes = await fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `token ${githubCredentials.token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(body)
+                });
+
+                if (!putRes.ok) {
+                    const errorDetails = await putRes.json();
+                    throw new Error(`Saving portfolio.json failed: ${errorDetails.message || putRes.statusText}`);
+                }
+            }
+
+            // Utility functions
+            function showLoginView() {
+                loginView.style.display = 'block';
+                dashboardView.style.display = 'none';
+            }
+
+            function showDashboardView() {
+                loginView.style.display = 'none';
+                dashboardView.style.display = 'block';
+            }
+
+            function showLoader(title, description) {
+                loaderTitle.textContent = title;
+                loaderDescription.textContent = description;
+                loaderOverlay.classList.add('active');
+            }
+
+            function hideLoader() {
+                loaderOverlay.classList.remove('active');
+            }
+
+            function showSuccessOverlay() {
+                successOverlay.classList.add('active');
+            }
+
+            // Base64 helper decoding supporting UTF-8
+            function decodeBase64(str) {
+                return decodeURIComponent(escape(atob(str.replace(/\s/g, ''))));
+            }
+        });
+    </script>
+</body>
+</html>

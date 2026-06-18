@@ -1,10 +1,25 @@
 /* 
-   Elysian Events - Main Interactive Logic
+   Devesh Events - Main Interactive Logic
    Handles Mobile Navigation, Active Navigation Highlighting, Gallery Filters,
    Interactive Budget Calculator, Testimonials Carousel, Scroll Animations, & Form Submissions.
 */
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    // Initialize Scroll Intersection Observer for fade-in animations
+    const scrollObserverOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const scrollObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('appear');
+                observer.unobserve(entry.target); // Trigger once
+            }
+        });
+    }, scrollObserverOptions);
 
     /* ==========================================
        1. MOBILE MENU DRAWER
@@ -69,38 +84,75 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ==========================================
-       3. PORTFOLIO FILTERING
+       3. DYNAMIC PORTFOLIO RENDERING & FILTERING
        ========================================== */
+    const portfolioGrid = document.getElementById('portfolio-gallery-grid');
     const filterButtons = document.querySelectorAll('.filter-btn');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
 
-    filterButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Remove active class from buttons
-            filterButtons.forEach(button => button.classList.remove('active'));
-            btn.classList.add('active');
+    // Fetch portfolio items from JSON file
+    fetch('portfolio.json')
+        .then(response => response.json())
+        .then(data => {
+            renderPortfolio(data);
+            initPortfolioFilters();
+        })
+        .catch(err => console.error('Error fetching portfolio:', err));
 
-            const filterValue = btn.getAttribute('data-filter');
+    function renderPortfolio(items) {
+        if (!portfolioGrid) return;
+        portfolioGrid.innerHTML = ''; // Clear loading placeholder
+        
+        items.forEach(item => {
+            const itemElement = document.createElement('div');
+            itemElement.className = 'portfolio-item fade-in';
+            itemElement.setAttribute('data-category', item.category);
+            itemElement.id = `portfolio-item-${item.id}`;
+            
+            itemElement.innerHTML = `
+                <img src="${item.image}" alt="${item.alt || item.title}">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">${item.category}</span>
+                    <h3 class="portfolio-title">${item.title}</h3>
+                    <p class="portfolio-details">${item.details}</p>
+                </div>
+            `;
+            
+            portfolioGrid.appendChild(itemElement);
+            
+            // Observe item for lazy fade-in animation
+            scrollObserver.observe(itemElement);
+        });
+    }
 
-            portfolioItems.forEach(item => {
-                // Apply simple grid layout animations
-                const itemCategory = item.getAttribute('data-category');
-                if (filterValue === 'all' || itemCategory === filterValue) {
-                    item.style.display = 'block';
-                    setTimeout(() => {
-                        item.style.opacity = '1';
-                        item.style.transform = 'scale(1)';
-                    }, 50);
-                } else {
-                    item.style.opacity = '0';
-                    item.style.transform = 'scale(0.8)';
-                    setTimeout(() => {
-                        item.style.display = 'none';
-                    }, 300);
-                }
+    function initPortfolioFilters() {
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from buttons
+                filterButtons.forEach(button => button.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+                const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+                portfolioItems.forEach(item => {
+                    const itemCategory = item.getAttribute('data-category');
+                    if (filterValue === 'all' || itemCategory === filterValue) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 50);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.8)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
             });
         });
-    });
+    }
 
 
     /* ==========================================
@@ -299,22 +351,8 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ==========================================
        6. SCROLL INTERSECTION OBSERVER (Fade-In Effect)
        ========================================== */
+    // Observe existing static elements in the DOM
     const fadeElements = document.querySelectorAll('.fade-in');
-
-    const scrollObserverOptions = {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const scrollObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('appear');
-                observer.unobserve(entry.target); // Trigger once
-            }
-        });
-    }, scrollObserverOptions);
-
     fadeElements.forEach(element => {
         scrollObserver.observe(element);
     });

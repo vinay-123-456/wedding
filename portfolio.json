@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "category": "weddings",
+    "title": "A Royal Affair",
+    "details": "Palace Wedding | Udaipur, India",
+    "image": "assets/portfolio_wedding_1.jpg",
+    "alt": "Classic Royal Palace Wedding"
+  },
+  {
+    "id": 2,
+    "category": "corporate",
+    "title": "NextGen Summit",
+    "details": "Product Launch | San Francisco, CA",
+    "image": "assets/portfolio_corp_1.jpg",
+    "alt": "Interactive Corporate Tech Summit"
+  },
+  {
+    "id": 3,
+    "category": "live",
+    "title": "Devesh Arena",
+    "details": "Electronic Music Festival | London, UK",
+    "image": "assets/portfolio_live_1.jpg",
+    "alt": "Outdoor Arena Electronic Concert"
+  },
+  {
+    "id": 4,
+    "category": "weddings",
+    "title": "Coastal Whispers",
+    "details": "Beach Wedding | Amalfi Coast, Italy",
+    "image": "assets/portfolio_wedding_2.jpg",
+    "alt": "Coastal Luxury Glassmorphic Wedding Setup"
+  },
+  {
+    "id": 5,
+    "category": "corporate",
+    "title": "Apex Charity Gala",
+    "details": "Annual Fundraiser | New York, NY",
+    "image": "assets/portfolio_corp_2.jpg",
+    "alt": "Black-Tie Charity Gala Event Details"
+  },
+  {
+    "id": 6,
+    "category": "live",
+    "title": "Symphony of Rock",
+    "details": "Arena Concert | Tokyo, Japan",
+    "image": "assets/portfolio_live_2.jpg",
+    "alt": "Indoor Arena Rock Concert Soundstage"
+  }
+]
