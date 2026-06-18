@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Elysian Events - Premium, luxury event planning and production agency specializing in bespoke weddings, corporate summits, and high-energy live concerts.">
+    <meta name="keywords" content="Luxury Wedding Planner, Corporate Event Management, Concert Producer, Live Events Agency, Event Planner, Premium Weddings">
+    <meta name="author" content="Elysian Events">
+    <title>Elysian Events | Luxury Event Production & Planning Agency</title>
+    <!-- Font Awesome for premium icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Local CSS link -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- 1. NAVIGATION BAR -->
+    <nav class="navbar" id="main-navbar">
+        <div class="container">
+            <a href="#home" class="logo" id="nav-logo">
+                ELYSIAN <span>EVENTS</span>
+            </a>
+            
+            <div class="nav-links" id="desktop-nav-links">
+                <a href="#home" class="nav-item active">Home</a>
+                <a href="#services" class="nav-item">Services</a>
+                <a href="#portfolio" class="nav-item">Portfolio</a>
+                <a href="#estimator" class="nav-item">Estimator</a>
+                <a href="#testimonials" class="nav-item">Testimonials</a>
+                <a href="#contact" class="nav-item">Contact</a>
+            </div>
+            
+            <div class="nav-actions">
+                <a href="#contact" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.75rem;" id="nav-cta-btn">Book Now</a>
+                <div class="mobile-toggle" id="hamburger-menu" aria-label="Toggle Navigation Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Drawer Overlay -->
+    <div class="nav-menu-mobile" id="mobile-menu-drawer">
+        <a href="#home" class="mobile-nav-item">Home</a>
+        <a href="#services" class="mobile-nav-item">Services</a>
+        <a href="#portfolio" class="mobile-nav-item">Portfolio</a>
+        <a href="#estimator" class="mobile-nav-item">Estimator</a>
+        <a href="#testimonials" class="mobile-nav-item">Testimonials</a>
+        <a href="#contact" class="mobile-nav-item">Contact</a>
+    </div>
+
+    <!-- 2. HERO SECTION -->
+    <header id="home" class="hero">
+        <div class="container">
+            <div class="hero-content fade-in" id="hero-content-block">
+                <span class="hero-subtitle">Luxury Event Curators</span>
+                <h1 class="hero-title">Crafting <span class="gold-text">Extraordinary</span> Realities</h1>
+                <p class="hero-description">
+                    From bespoke weddings and high-profile corporate summits to multi-sensory live shows, we design, coordinate, and produce memorable experiences with flawless execution.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-primary" id="hero-cta-explore">Our Services</a>
+                    <a href="#estimator" class="btn btn-secondary" id="hero-cta-estimate">Estimate Event</a>
+                </div>
+                
+                <!-- Stats Row -->
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <h3>10+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>500+</h3>
+                        <p>Events Managed</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>99%</h3>
+                        <p>Happy Clients</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Hero visual container -->
+        <div class="hero-visual fade-in" id="hero-showcase">
+            <div class="hero-img-container">
+                <img src="assets/hero_event.jpg" alt="Elysian Luxury Event Production" id="hero-visual-img">
+            </div>
+        </div>
+    </header>
+
+    <!-- 3. SERVICES SECTION -->
+    <section id="services" class="services-section section-padding">
+        <div class="container">
+            <div class="text-center fade-in">
+                <span class="section-subtitle">Our Expertise</span>
+                <h2 class="section-title">The Three Pillars</h2>
+            </div>
+            
+            <div class="services-grid">
+                <!-- weddings -->
+                <div class="service-card glass-panel fade-in" id="service-card-weddings">
+                    <div>
+                        <div class="service-icon"><i class="fa-solid fa-gem"></i></div>
+                        <h3>Bespoke Weddings</h3>
+                        <p>Immersive, grand, and intimate love stories told through luxury decor, premium catering, and seamless orchestrations designed for your unique moments.</p>
+                        <ul class="service-features">
+                            <li><i class="fa-solid fa-check"></i> Destination Weddings Planning</li>
+                            <li><i class="fa-solid fa-check"></i> Thematic Floral Design & Decor</li>
+                            <li><i class="fa-solid fa-check"></i> Vendor & Entertainment Curation</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="service-link">Inquire <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <!-- corporate -->
+                <div class="service-card glass-panel fade-in" id="service-card-corporate">
+                    <div>
+                        <div class="service-icon"><i class="fa-solid fa-briefcase"></i></div>
+                        <h3>Corporate Summits</h3>
+                        <p>Refining brand presence with high-impact, technologically advanced corporate events, retreats, summits, product launches, and award ceremonies.</p>
+                        <ul class="service-features">
+                            <li><i class="fa-solid fa-check"></i> Award Shows & Galas</li>
+                            <li><i class="fa-solid fa-check"></i> Tech Summits & Global Launches</li>
+                            <li><i class="fa-solid fa-check"></i> VIP C-Suite Retreater Curation</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="service-link">Inquire <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <!-- live events -->
+                <div class="service-card glass-panel fade-in" id="service-card-live">
+                    <div>
+                        <div class="service-icon"><i class="fa-solid fa-guitar"></i></div>
+                        <h3>Live Concerts & Festivals</h3>
+                        <p>High-octane, multi-sensory experiences. From international concerts and festival grounds to public art showcases and dynamic fan meetups.</p>
+                        <ul class="service-features">
+                            <li><i class="fa-solid fa-check"></i> Multi-tier Stage & Sound Design</li>
+                            <li><i class="fa-solid fa-check"></i> Crowd & Artist Management</li>
+                            <li><i class="fa-solid fa-check"></i> Pyrotechnics & Visual Graphics</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="service-link">Inquire <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. PORTFOLIO GALLERY -->
+    <section id="portfolio" class="portfolio-section section-padding">
+        <div class="container">
+            <div class="text-center fade-in">
+                <span class="section-subtitle">Visual Chronicles</span>
+                <h2 class="section-title">Selected Projects</h2>
+            </div>
+            
+            <!-- Filters -->
+            <div class="portfolio-filters fade-in" id="portfolio-filters-container">
+                <button class="filter-btn active" data-filter="all" id="btn-filter-all">All</button>
+                <button class="filter-btn" data-filter="weddings" id="btn-filter-weddings">Weddings</button>
+                <button class="filter-btn" data-filter="corporate" id="btn-filter-corporate">Corporate</button>
+                <button class="filter-btn" data-filter="live" id="btn-filter-live">Live Events</button>
+            </div>
+            
+            <!-- Grid -->
+            <div class="portfolio-grid fade-in" id="portfolio-gallery-grid">
+                <!-- Item 1: Wedding -->
+                <div class="portfolio-item" data-category="weddings" id="portfolio-item-1">
+                    <img src="assets/portfolio_wedding_1.jpg" alt="Classic Royal Palace Wedding">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Weddings</span>
+                        <h3 class="portfolio-title">A Royal Affair</h3>
+                        <p class="portfolio-details">Palace Wedding | Udaipur, India</p>
+                    </div>
+                </div>
+
+                <!-- Item 2: Corporate -->
+                <div class="portfolio-item" data-category="corporate" id="portfolio-item-2">
+                    <img src="assets/portfolio_corp_1.jpg" alt="Interactive Corporate Tech Summit">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Corporate</span>
+                        <h3 class="portfolio-title">NextGen Summit</h3>
+                        <p class="portfolio-details">Product Launch | San Francisco, CA</p>
+                    </div>
+                </div>
+
+                <!-- Item 3: Live Event -->
+                <div class="portfolio-item" data-category="live" id="portfolio-item-3">
+                    <img src="assets/portfolio_live_1.jpg" alt="Outdoor Arena Electronic Concert">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Live Events</span>
+                        <h3 class="portfolio-title">Elysian Arena</h3>
+                        <p class="portfolio-details">Electronic Music Festival | London, UK</p>
+                    </div>
+                </div>
+
+                <!-- Item 4: Wedding -->
+                <div class="portfolio-item" data-category="weddings" id="portfolio-item-4">
+                    <img src="assets/portfolio_wedding_2.jpg" alt="Coastal Luxury Glassmorphic Wedding Setup">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Weddings</span>
+                        <h3 class="portfolio-title">Coastal Whispers</h3>
+                        <p class="portfolio-details">Beach Wedding | Amalfi Coast, Italy</p>
+                    </div>
+                </div>
+
+                <!-- Item 5: Corporate -->
+                <div class="portfolio-item" data-category="corporate" id="portfolio-item-5">
+                    <img src="assets/portfolio_corp_2.jpg" alt="Black-Tie Charity Gala Event Details">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Corporate</span>
+                        <h3 class="portfolio-title">Apex Charity Gala</h3>
+                        <p class="portfolio-details">Annual Fundraiser | New York, NY</p>
+                    </div>
+                </div>
+
+                <!-- Item 6: Live Event -->
+                <div class="portfolio-item" data-category="live" id="portfolio-item-6">
+                    <img src="assets/portfolio_live_2.jpg" alt="Indoor Arena Rock Concert Soundstage">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Live Events</span>
+                        <h3 class="portfolio-title">Symphony of Rock</h3>
+                        <p class="portfolio-details">Arena Concert | Tokyo, Japan</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. INTERACTIVE EVENT CALCULATOR -->
+    <section id="estimator" class="calculator-section section-padding">
+        <div class="container">
+            <div class="text-center fade-in">
+                <span class="section-subtitle">Real-time Budget Planner</span>
+                <h2 class="section-title">Design Your Budget</h2>
+            </div>
+            
+            <div class="calc-wrapper">
+                <!-- Inputs Form -->
+                <div class="calc-form glass-panel fade-in" id="event-calculator-form">
+                    
+                    <!-- 1. Select Event Type -->
+                    <div class="calc-group">
+                        <label class="calc-label">Choose Event Category</label>
+                        <div class="event-type-grid">
+                            <label class="radio-card selected" id="label-calc-wedding">
+                                <input type="radio" name="event-type" value="wedding" checked id="calc-radio-wedding">
+                                <div class="radio-card-content">
+                                    <i class="fa-solid fa-heart"></i>
+                                    <span>Wedding</span>
+                                </div>
+                            </label>
+                            
+                            <label class="radio-card" id="label-calc-corporate">
+                                <input type="radio" name="event-type" value="corporate" id="calc-radio-corporate">
+                                <div class="radio-card-content">
+                                    <i class="fa-solid fa-briefcase"></i>
+                                    <span>Corporate</span>
+                                </div>
+                            </label>
+                            
+                            <label class="radio-card" id="label-calc-live">
+                                <input type="radio" name="event-type" value="live" id="calc-radio-live">
+                                <div class="radio-card-content">
+                                    <i class="fa-solid fa-music"></i>
+                                    <span>Live Event</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- 2. Guest Count Slider -->
+                    <div class="calc-group">
+                        <div class="slider-container">
+                            <div class="slider-val-wrapper">
+                                <label class="calc-label" style="margin-bottom: 0;">Expected Guest Attendance</label>
+                                <span class="slider-value"><span id="guest-count-output">150</span> Guests</span>
+                            </div>
+                            <input type="range" class="calc-range" id="guest-slider" min="50" max="2000" step="50" value="150">
+                        </div>
+                    </div>
+                    
+                    <!-- 3. Services / Add-ons -->
+                    <div class="calc-group">
+                        <label class="calc-label">Include Additional Services</label>
+                        <div class="addons-grid">
+                            
+                            <label class="checkbox-card checked" id="label-addon-decor">
+                                <input type="checkbox" checked value="decor" id="addon-decor">
+                                <div class="checkbox-card-content">
+                                    <span class="title">Bespoke Decor & Floral styling</span>
+                                    <span class="price-hint">Base + $50/guest</span>
+                                </div>
+                            </label>
+
+                            <label class="checkbox-card checked" id="label-addon-catering">
+                                <input type="checkbox" checked value="catering" id="addon-catering">
+                                <div class="checkbox-card-content">
+                                    <span class="title">Gourmet Catering & Mixology</span>
+                                    <span class="price-hint">$90/guest</span>
+                                </div>
+                            </label>
+
+                            <label class="checkbox-card" id="label-addon-av">
+                                <input type="checkbox" value="av" id="addon-av">
+                                <div class="checkbox-card-content">
+                                    <span class="title">Premium AV, Sound & Stage FX</span>
+                                    <span class="price-hint">Flat $12,000</span>
+                                </div>
+                            </label>
+
+                            <label class="checkbox-card" id="label-addon-artists">
+                                <input type="checkbox" value="artists" id="addon-artists">
+                                <div class="checkbox-card-content">
+                                    <span class="title">Entertainment & Guest Artists</span>
+                                    <span class="price-hint">Flat $18,000</span>
+                                </div>
+                            </label>
+
+                            <label class="checkbox-card" id="label-addon-media">
+                                <input type="checkbox" value="media" id="addon-media">
+                                <div class="checkbox-card-content">
+                                    <span class="title">Cinematic Videography & Live Stream</span>
+                                    <span class="price-hint">Flat $6,000</span>
+                                </div>
+                            </label>
+
+                            <label class="checkbox-card" id="label-addon-planning">
+                                <input type="checkbox" value="planning" id="addon-planning">
+                                <div class="checkbox-card-content">
+                                    <span class="title">On-site Day Coordinators</span>
+                                    <span class="price-hint">Flat $4,000</span>
+                                </div>
+                            </label>
+
+                        </div>
+                    </div>
+
+                </div>
+                
+                <!-- Results Card -->
+                <div class="calc-results glass-panel fade-in" id="calculator-results-card">
+                    <div class="results-header">
+                        <h4>Estimated Proposal</h4>
+                        <p>Custom tailored package estimate</p>
+                        <div class="estimate-price" id="calc-total-display">$28,500</div>
+                        <p class="price-disclaimer">*Note: This is a professional rough estimate. Final prices may vary based on exact vendor sourcing and location availability.</p>
+                    </div>
+                    
+                    <div class="results-breakdown">
+                        <div class="breakdown-item">
+                            <span>Base Event Management Fees</span>
+                            <span id="calc-base-display">$15,000</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span>Guest Service Costs</span>
+                            <span id="calc-guest-display">$13,500</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span>Flat-Rate Service Addons</span>
+                            <span id="calc-flat-display">$0</span>
+                        </div>
+                        <div class="breakdown-item total">
+                            <span>Estimated Total Budget</span>
+                            <span id="calc-breakdown-total">$28,500</span>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="btn btn-primary text-center" style="width: 100%;" id="calc-cta-btn">Lock This Proposal</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. TESTIMONIALS SECTION -->
+    <section id="testimonials" class="testimonials-section section-padding">
+        <div class="container">
+            <div class="text-center fade-in">
+                <span class="section-subtitle">Exemplary Accolades</span>
+                <h2 class="section-title">Client Voices</h2>
+            </div>
+            
+            <div class="testimonials-slider fade-in" id="testimonials-carousel">
+                <!-- Slide 1 -->
+                <div class="testimonial-slide active" id="slide-1">
+                    <img src="assets/client_1.jpg" alt="Sophia & Liam - Wedding Clients" class="client-img">
+                    <i class="fa-solid fa-quote-left quote-icon"></i>
+                    <p class="testimonial-text">
+                        "Elysian Events turned our destination wedding in Italy into a fairytale. Every single element, from the hand-drawn floral design to coordination of 200 guests across 3 venues, was executed flawlessly. Absolutely recommend!"
+                    </p>
+                    <div class="client-info">
+                        <h4>Sophia &amp; Liam</h4>
+                        <p>Wedding | Amalfi Coast, Italy</p>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="testimonial-slide" id="slide-2">
+                    <img src="assets/client_2.jpg" alt="Marcus Vane - CEO, tech enterprise" class="client-img">
+                    <i class="fa-solid fa-quote-left quote-icon"></i>
+                    <p class="testimonial-text">
+                        "For our global product launch, precision was non-negotiable. The technical integration, crowd flow management, and stage setups were world-class. Elysian is our default choice for corporate events."
+                    </p>
+                    <div class="client-info">
+                        <h4>Marcus Vane</h4>
+                        <p>CEO, VeloTech | San Francisco</p>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="testimonial-slide" id="slide-3">
+                    <img src="assets/client_3.jpg" alt="Elena Rostova - Producer, Music Fest" class="client-img">
+                    <i class="fa-solid fa-quote-left quote-icon"></i>
+                    <p class="testimonial-text">
+                        "Managing the artist line-ups, security details, and soundstages for a crowd of 15,000 would have been impossible without Elysian. Their operations team is incredibly proactive under high pressure."
+                    </p>
+                    <div class="client-info">
+                        <h4>Elena Rostova</h4>
+                        <p>Festival Director | London, UK</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Controls -->
+            <div class="slider-controls fade-in">
+                <button class="slider-btn" id="testimonial-prev-btn" aria-label="Previous Review">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button class="slider-btn" id="testimonial-next-btn" aria-label="Next Review">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. BOOKING & INQUIRY FORM -->
+    <section id="contact" class="contact-section section-padding">
+        <div class="container">
+            <div class="text-center fade-in">
+                <span class="section-subtitle">Reserve Your Date</span>
+                <h2 class="section-title">Begin Your Journey</h2>
+            </div>
+            
+            <div class="contact-grid">
+                <!-- Info Column -->
+                <div class="contact-info fade-in" id="contact-details">
+                    <div>
+                        <h3 style="font-size: 2.2rem; margin-bottom: 1rem;">Let's Connect</h3>
+                        <p style="color: var(--text-secondary);">We are available for worldwide bookings and consultations. Reach out to schedule a private call with our directors.</p>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                        <div class="info-content">
+                            <h4>Write to Us</h4>
+                            <p><a href="mailto:concierge@elysianevents.com">concierge@elysianevents.com</a></p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                        <div class="info-content">
+                            <h4>Call Concierge</h4>
+                            <p><a href="tel:+18005553597">+1 (800) 555-3597</a></p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="info-content">
+                            <h4>Our Studios</h4>
+                            <p>750 Fifth Avenue, Floor 12<br>New York, NY 10019</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 1rem;">Follow Our Journeys</h4>
+                        <div class="social-links">
+                            <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" class="social-btn"><i class="fa-brands fa-pinterest-p"></i></a>
+                            <a href="#" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#" class="social-btn"><i class="fa-brands fa-vimeo-v"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Form Column -->
+                <form class="contact-form glass-panel fade-in" id="booking-contact-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="contact-name">Full Name</label>
+                            <input type="text" id="contact-name" class="form-control" placeholder="E.g., Charlotte Hayes" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contact-email">Email Address</label>
+                            <input type="email" id="contact-email" class="form-control" placeholder="E.g., charlotte@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-category">Event Category</label>
+                            <select id="contact-category" class="form-control" required style="background-color: var(--bg-primary);">
+                                <option value="" disabled selected>Select event category...</option>
+                                <option value="wedding">Bespoke Wedding</option>
+                                <option value="corporate">Corporate Summit</option>
+                                <option value="live">Live Concert / Festival</option>
+                                <option value="other">Other Unique Celebration</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-date">Preferred Date</label>
+                            <input type="date" id="contact-date" class="form-control" required>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="contact-notes">Share Your Vision (Optional)</label>
+                            <textarea id="contact-notes" class="form-control" placeholder="Tell us more about the size, location, theme, or any custom wishes you have..."></textarea>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;" id="btn-submit-form">Send Concierge Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4 class="gold-text" style="font-size: 1.6rem; letter-spacing: 2px;">ELYSIAN</h4>
+                    <p>Creating luxury experiences and bespoke events globally. Our attention to details ensures each project stands out as a unique piece of art.</p>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">&copy; 2026 Elysian Events Inc. All rights reserved.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Discover</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services">Our Pillars</a></li>
+                        <li><a href="#portfolio">Selected Gallery</a></li>
+                        <li><a href="#estimator">Real-time Budget Calculator</a></li>
+                        <li><a href="#testimonials">Exemplary Accolades</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Concierge</h4>
+                    <ul class="footer-links">
+                        <li><a href="#contact">Private Inquiries</a></li>
+                        <li><a href="#contact">Studio Consultation</a></li>
+                        <li><a href="#">Press &amp; Publications</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Journal</h4>
+                    <p>Subscribe to our luxury events journal to receive periodic inspirations and private invites.</p>
+                    <form class="newsletter-form" id="footer-newsletter-form">
+                        <input type="email" placeholder="Email address" required id="newsletter-email">
+                        <button type="submit">Join</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Designed for aesthetic excellence and flawless execution.</p>
+                <p>Privacy Policy | Terms of Services</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Local JavaScript link -->
+    <script src="app.js"></script>
+</body>
+</html>
