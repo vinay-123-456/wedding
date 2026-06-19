@@ -504,7 +504,8 @@ input, select, textarea, button {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 480px;
+    min-height: 480px;
+    height: auto;
     border-radius: 0;
 }
 
@@ -1268,24 +1269,43 @@ textarea.form-control {
         min-height: auto;
         padding-top: 140px;
         padding-bottom: 6rem;
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-content {
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .hero-buttons {
+        justify-content: center;
+    }
+    .stats-row {
+        margin-left: auto;
+        margin-right: auto;
     }
     .hero-visual {
         position: relative;
         right: auto;
         top: auto;
         transform: none;
-        width: 100%;
+        width: calc(100% - 4rem);
+        margin: 4rem auto 0;
         height: 400px;
-        margin-top: 4rem;
-    }
-    .hero-content {
-        max-width: 100%;
     }
     
     /* Grids */
     .services-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
+    }
+    .service-card {
+        padding: 2.5rem 2rem;
     }
     
     .portfolio-grid {
@@ -1312,25 +1332,66 @@ textarea.form-control {
 }
 
 @media (max-width: 767px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+    .logo span {
+        font-size: 1rem;
+    }
+    .nav-actions .btn {
+        padding: 0.5rem 1rem !important;
+        font-size: 0.7rem !important;
+    }
+
+    .section-padding {
+        padding: 4rem 0;
+    }
+
     .section-title {
-        font-size: 2.3rem;
+        font-size: 2.2rem;
     }
     
     .hero-title {
-        font-size: 3rem;
+        font-size: 2.8rem;
+    }
+    .hero-description {
+        font-size: 1rem;
     }
     
     .hero-buttons {
         flex-direction: column;
         gap: 1rem;
+        width: 100%;
+        max-width: 300px;
+    }
+    .hero-buttons .btn {
+        width: 100%;
+    }
+
+    .hero-visual {
+        width: calc(100% - 3rem);
+        height: 300px;
+        margin-top: 3rem;
     }
     
     .services-grid {
         grid-template-columns: 1fr;
     }
+    .service-card {
+        min-height: auto;
+        height: auto;
+        padding: 2.5rem 1.5rem;
+    }
     
     .portfolio-grid {
         grid-template-columns: 1fr;
+    }
+    .portfolio-item {
+        height: 320px;
     }
     
     .event-type-grid {
@@ -1340,9 +1401,35 @@ textarea.form-control {
     .addons-grid {
         grid-template-columns: 1fr;
     }
+
+    .calc-form {
+        padding: 1.5rem;
+    }
+    .calc-results {
+        padding: 2rem 1.5rem;
+    }
+    .estimate-price {
+        font-size: 2.8rem;
+    }
     
+    .testimonial-text {
+        font-size: 1.2rem;
+    }
+    .testimonials-slider {
+        min-height: 450px;
+    }
+    .client-img {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .contact-form {
+        padding: 2rem;
+    }
     .form-grid {
         grid-template-columns: 1fr;
+        gap: 1.2rem;
     }
     
     .form-group.full-width {
@@ -1358,6 +1445,82 @@ textarea.form-control {
         flex-direction: column;
         gap: 1rem;
         text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .logo {
+        font-size: 1.25rem;
+    }
+    .logo span {
+        font-size: 0.8rem;
+    }
+    .nav-actions {
+        gap: 0.8rem;
+    }
+    .nav-actions .btn {
+        padding: 0.4rem 0.8rem !important;
+        font-size: 0.65rem !important;
+    }
+
+    .hero {
+        padding-top: 110px;
+        padding-bottom: 4rem;
+    }
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    .hero-visual {
+        width: calc(100% - 2rem);
+        height: 240px;
+        padding: 1rem;
+    }
+    .hero-visual::after {
+        top: -10px;
+        left: -10px;
+        right: 10px;
+        bottom: 10px;
+    }
+
+    .stats-row {
+        gap: 1rem;
+        padding-top: 1.8rem;
+    }
+    .stat-item h3 {
+        font-size: 2rem;
+    }
+    .stat-item p {
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .calc-form {
+        padding: 1.2rem 1rem;
+    }
+    .calc-results {
+        padding: 1.8rem 1rem;
+    }
+    .estimate-price {
+        font-size: 2.4rem;
+    }
+
+    .testimonial-text {
+        font-size: 1.05rem;
+    }
+    .testimonials-slider {
+        min-height: 480px;
+    }
+
+    .contact-form {
+        padding: 1.5rem 1rem;
     }
 }
 
