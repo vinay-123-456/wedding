@@ -48,12 +48,17 @@
     scroll-behavior: smooth;
 }
 
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+}
+
 body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
     font-family: var(--font-body);
     line-height: 1.6;
-    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -1539,10 +1544,12 @@ textarea.form-control {
     align-items: center;
     gap: 2rem;
     transition: var(--transition-smooth);
+    visibility: hidden; /* Prevent horizontal overflow/scroll when offscreen */
 }
 
 .nav-menu-mobile.active {
     left: 0;
+    visibility: visible;
 }
 
 .nav-menu-mobile a {
